@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Kader Adeniran</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <style>
+        /* Custom styles that can't be done with Tailwind */
+        .bg-hero {
+            /* background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'); */
+background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/banner.avif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .skill-bar {
+            height: 0.5rem;
+            background-color: #e5e7eb;
+            border-radius: 0.25rem;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: #ef4444;
+            border-radius: 0.25rem;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .floating { 
+            animation-name: floating;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0,  0px); }
+            50%  { transform: translate(0, 15px); }
+            100%   { transform: translate(0, -0px); }   
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Scroll to top button -->
+    <button id="scroll-top" class="fixed bottom-8 right-8 bg-red-500 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-0 invisible z-50">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-white text-2xl font-bold">Portfo<span class="text-red-500">lio.</span></a>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link text-white px-3 py-2 text-sm font-medium">Accueil</a>
+                        <a href="#about" class="nav-link text-white px-3 py-2 text-sm font-medium">Présentation</a>
+                        <a href="#services" class="nav-link text-white px-3 py-2 text-sm font-medium">Expériences</a>
+                        <a href="#skills" class="nav-link text-white px-3 py-2 text-sm font-medium">Compétences</a>
+                        <a href="#projects" class="nav-link text-white px-3 py-2 text-sm font-medium">Projets</a>
+                        <a href="#contact" class="nav-link text-white px-3 py-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 text-white text-base font-medium">Accueil</a>
+                <a href="#about" class="block px-3 py-2 text-white text-base font-medium">Présentation</a>
+                <a href="#services" class="block px-3 py-2 text-white text-base font-medium">Expériences</a>
+                <a href="#skills" class="block px-3 py-2 text-white text-base font-medium">Compétences</a>
+                <a href="#projects" class="block px-3 py-2 text-white text-base font-medium">Projets</a>
+                <a href="#contact" class="block px-3 py-2 text-white text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-hero min-h-screen flex items-center justify-center text-white pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-4 text-xl sm:text-2xl">Bienvenu, je suis</div>
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold mb-4">Kader ADENIRAN</h1>
+            <div class="text-2xl sm:text-3xl md:text-4xl mb-8">
+                Professionnel en <span id="typed" class="text-red-500"></span>
+            </div>
+            <a href="#about" class="inline-block bg-red-500 hover:bg-transparent hover:text-red-500 border-2 border-red-500 text-white font-bold py-3 px-8 rounded-full transition-all duration-300">
+                Démarrer !
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16 relative pb-4">
+                Présentation
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-red-500"></span>
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 -mb-2 text-sm text-red-500">Qui suis-je</span>
+            </h2>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/3 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                         alt="Kader Adeniran" 
+                         class="rounded-lg shadow-xl w-full max-w-md floating">
+                </div>
+                
+                <div class="lg:w-2/3">
+                    <h3 class="text-2xl font-bold mb-4">Je suis Kader, <span id="typed-2" class="text-red-500"></span></h3>
+                    <p class="mb-6 text-gray-600">
+                        <b>Jeune professionnel dynamique</b>, passionné par le numérique et l'univers des données, je me distingue par ma curiosité, ma rigueur et mon engagement. Formé aux techniques de <b>développement d'applications</b>, d'<b>analyse et de modélisation de données</b>, j'ai acquis une maîtrise solide des outils tels que <b>Power BI</b> et <b>Excel</b> pour transformer l'information en leviers décisionnels pertinents.
+                    </p>
+                    <p class="mb-6 text-gray-600">
+                        Toujours à la recherche de solutions <b>claires</b>, <b>automatisées</b> et <b>utiles</b>, je conçois des projets à forte valeur ajoutée, en alliant approche technique et compréhension fonctionnelle. Mon ambition : <b>contribuer à des projets innovants</b> et <b>concrets</b>, dans un environnement stimulant et tourné vers l'avenir.
+                    </p>
+                    <a href="images/CV ADENIRAN KADER.pdf" target="_blank" 
+                       class="inline-block bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl">
+                        Voir Mon CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16 relative pb-4">
+                Domaines d'Expériences
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-red-500"></span>
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 -mb-2 text-sm text-red-500">Je maîtrise</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-gray-800 rounded-lg p-8 transition-all duration-300 card-hover">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-paint-brush text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Design & Visualisation</h3>
+                        <p class="text-gray-300">
+                            <b>Je transforme les données en visuels clairs, impactants et compréhensibles.</b> Grâce à des outils comme <b>Power BI</b> ou <b>Excel</b>, je conçois des <b>tableaux de bord</b> et <b>rapports interactifs</b> qui facilitent la prise de décision.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-gray-800 rounded-lg p-8 transition-all duration-300 card-hover">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-chart-line text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Analyse de la performance</h3>
+                        <p class="text-gray-300">
+                            <b>J'élabore et pilote des indicateurs clés pour mesurer l'efficacité des actions et orienter les décisions.</b> Mes tableaux de bord mettent en lumière les données essentielles pour un suivi régulier et stratégique de la performance.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="bg-gray-800 rounded-lg p-8 transition-all duration-300 card-hover">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-code text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Développement & Programmation</h3>
+                        <p class="text-gray-300">
+                            <b>Je conçois des solutions web et logicielles efficaces, performantes et maintenables.</b> De l'analyse des besoins à l'implémentation, je mets en œuvre des technologies adaptées pour créer des applications centrées utilisateur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16 relative pb-4">
+                Domaines de Compétences
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-red-500"></span>
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 -mb-2 text-sm text-red-500">Mon savoir</span>
+            </h2>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4">Description de mes Domaines de Compétences.</h3>
+                    <p class="mb-6 text-gray-600">
+                        Je maîtrise les fondamentaux du développement d'applications, de l'analyse de données et de la visualisation. Grâce à des outils comme <b>Power BI</b>, <b>Excel</b> et des bases de données structurées, je conçois des <b>tableaux de bord</b>, réalise des <b>analyses pertinentes</b>, et participe au <b>pilotage de la performance</b>. Mon approche allie technique, lisibilité et impact métier.
+                    </p>
+                    <a href="https://www.linkedin.com/in/kader-adeniran-b4567728b/" target="_blank" 
+                       class="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-8 rounded-full transition-all duration-300">
+                        Mon LinkedIn !
+                    </a>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <!-- Skill 1 -->
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Programmation et développement</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill 2 -->
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Production et pilotage de tableau de bord</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill 3 -->
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Analyse de données & Modelisation de données</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill 4 -->
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Gestion de Base de donnée</span>
+                            <span>50%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 50%;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill 5 -->
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Reporting Power BI et Excel</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16 relative pb-4">
+                Mes Expériences
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-red-500"></span>
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 -mb-2 text-sm text-red-500">Et Projets</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300 card-hover">
+                    <div class="h-48 bg-gray-800 flex items-center justify-center">
+                        <img src="https://via.placeholder.com/150" alt="SIB Logo" class="h-24">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Société Ivoirienne de Banque - SIB</h3>
+                        <p class="text-gray-600">Statgiaire - AMOA (Assistance à Maîtrise d'Ouvrage) Novembre 2023 - Août 2024</p>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300 card-hover">
+                    <div class="h-48 bg-gray-800 flex items-center justify-center">
+                        <img src="https://via.placeholder.com/150" alt="GDO Logo" class="h-24">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">GDO - Gestion Des Ordres</h3>
+                        <p class="text-gray-600">Il s'agit d'une application de gestion des entrée et sortie des ordres de virement.</p>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300 card-hover">
+                    <div class="h-48 bg-gray-800 flex items-center justify-center">
+                        <img src="https://via.placeholder.com/150" alt="SIB Logo" class="h-24">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Société Ivoirienne de Banque - SIB</h3>
+                        <p class="text-gray-600">Temps Plein - AMOA (Assistance à Maîtrise d'Ouvrage) Février 2025 - Aujourd'hui</p>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300 card-hover">
+                    <div class="h-48 bg-gray-800 flex items-center justify-center">
+                        <img src="https://via.placeholder.com/150" alt="VerifCaract Logo" class="h-24">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Application Desktop (VerifCaract)</h3>
+                        <p class="text-gray-600">Il s'agit d'un outil de verification et de mise en forme des fichiers de traitement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16 relative pb-4">
+                Mes informations
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-red-500"></span>
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 -mb-2 text-sm text-red-500">Me contacter</span>
+            </h2>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4">Mes coordonnées</h3>
+                    <p class="mb-8 text-gray-300">
+                        Ce site est une version statique destinée à présenter mon profil et mes compétences. Pour me contacter, veuillez utiliser les liens disponibles en bas de page (téléphone, email ou LinkedIn), Ou renseignez le formulaire pour m'envoyer un mail.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <!-- Contact 1 -->
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mr-6">
+                                <i class="fas fa-user text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/kader-adeniran-b4567728b/" class="text-gray-300 hover:text-red-500 transition-colors duration-300">
+                                    Kader ADENIRAN
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact 2 -->
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mr-6">
+                                <i class="fas fa-phone text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Téléphone</h4>
+                                <p class="text-gray-300">05 66 83 03 66</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact 3 -->
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mr-6">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Mail Personel</h4>
+                                <a href="mailto:adenirankader@yahoo.com" class="text-gray-300 hover:text-red-500 transition-colors duration-300">
+                                    adenirankader@yahoo.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4">Contact :</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <input type="text" id="nom" name="nom" placeholder="Nom" required 
+                                       class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-red-500 focus:outline-none transition-colors duration-300">
+                            </div>
+                            <div>
+                                <input type="email" id="email" name="email" placeholder="Email" required 
+                                       class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-red-500 focus:outline-none transition-colors duration-300">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <input type="text" id="sujet" name="sujet" placeholder="Sujet" required 
+                                   class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-red-500 focus:outline-none transition-colors duration-300">
+                        </div>
+                        
+                        <div>
+                            <textarea id="message" name="message" rows="5" placeholder="Message..." required 
+                                      class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-red-500 focus:outline-none transition-colors duration-300"></textarea>
+                        </div>
+                        
+                        <div>
+                            <button type="submit" 
+                                    class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-8 rounded-full transition-all duration-300">
+                                Envoyer
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8 text-center text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p>
+                Créé par 
+                <a href="https://www.linkedin.com/in/kader-adeniran-b4567728b/" target="_blank" class="text-red-500 hover:text-red-400 transition-colors duration-300">
+                    Kader Adeniran
+                </a>
+                &nbsp;|&nbsp;
+                <i class="far fa-copyright"></i> 2025 – Modèle inspiré d'un template
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                navbar.classList.add('bg-gray-900', 'shadow-lg');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('bg-gray-900', 'shadow-lg');
+                navbar.classList.add('bg-transparent');
+            }
+            
+            // Show/hide scroll to top button
+            const scrollTopBtn = document.getElementById('scroll-top');
+            if (scrollTop > 300) {
+                scrollTopBtn.classList.remove('opacity-0', 'invisible');
+                scrollTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollTopBtn.classList.add('opacity-0', 'invisible');
+                scrollTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top button
+        document.getElementById('scroll-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Typing animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const typed = new Typed('#typed', {
+                strings: [
+                    "Dév. Web et App",
+                    "Analyse fonctionnelle",
+                    "Power BI - DataViz",
+                    "Data Analyse",
+                    "Modélisation de données",
+                    "Production de dashbord"
+                ],
+                typeSpeed: 50,
+                backSpeed: 30,
+                loop: true
+            });
+
+            const typed2 = new Typed('#typed-2', {
+                strings: [
+                    "Développeur Web",
+                    "Développeur App",
+                    "Business Analyst",
+                    "Specialiste Excel",
+                    "Specialiste PowerBI",
+                    "Data Analyst",
+                    "Concepteur Data"
+                ],
+                typeSpeed: 50,
+                backSpeed: 30,
+                loop: true
+            });
+        });
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nom = encodeURIComponent(document.getElementById('nom').value);
+            const email = encodeURIComponent(document.getElementById('email').value);
+            const sujet = encodeURIComponent(document.getElementById('sujet').value);
+            const message = encodeURIComponent(document.getElementById('message').value);
+            
+            const mailto = `mailto:adenirankader@yahoo.com` +
+                `?subject=${sujet}` +
+                `&body=Nom%20:%20${nom}%0A` +
+                `Email%20:%20${email}%0A%0A` +
+                `${message}`;
+            
+            window.location.href = mailto;
+        });
+
+        // CV download function
+        function telechargerCV(e) {
+            const lienDownload = document.createElement('a');
+            lienDownload.href = e.currentTarget.href;
+            lienDownload.download = 'CV ADENIRAN KADER.pdf';
+            document.body.appendChild(lienDownload);
+            lienDownload.click();
+            document.body.removeChild(lienDownload);
+        }
+    </script>
+</body>
+</html>
