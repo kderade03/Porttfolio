@@ -56,7 +56,6 @@ $(document).ready(function(){
         strings: [
   "Développeur Web",
   "Développeur App",
-  "Business Analyst",
   "Specialiste Excel",
   "Specialiste PowerBI",
   "Data Analyst",
@@ -189,7 +188,7 @@ document.getElementById('scroll-top').addEventListener('click', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const typed = new Typed('#typed', {
         strings: [
-            "Dév. Web et App",
+            "Développeur App et App",
             "Analyse fonctionnelle",
             "Power BI - DataViz",
             "Data Analyse",
@@ -203,9 +202,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const typed2 = new Typed('#typed-2', {
         strings: [
-            "Développeur Web",
-            "Développeur App",
-            "Business Analyst",
+            "Dév. Web",
+            "Dév. App",
             "Specialiste Excel",
             "Specialiste PowerBI",
             "Data Analyst",
