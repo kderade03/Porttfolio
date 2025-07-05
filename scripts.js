@@ -54,8 +54,8 @@ $(document).ready(function(){
 
     var typed = new Typed(".typing-2", {
         strings: [
-  "Développeur Web",
-  "Développeur App",
+  "développement Web",
+  "développement App",
   "Specialiste Excel",
   "Specialiste PowerBI",
   "Data Analyst",
