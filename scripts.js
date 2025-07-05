@@ -188,7 +188,7 @@ document.getElementById('scroll-top').addEventListener('click', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const typed = new Typed('#typed', {
         strings: [
-            "Développeur App et App",
+            "Développement App et App",
             "Analyse fonctionnelle",
             "Power BI - DataViz",
             "Data Analyse",
